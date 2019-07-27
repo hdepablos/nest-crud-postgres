@@ -1,0 +1,42 @@
+crear app
+    nest new ideas-api
+    npm install dotenv
+    npm i --save pg typeorm @nestjs/typeorm
+    npm i --save @nestjs/typeorm typeorm mysql
+    yarn add @nestjs/typeorm typeorm mysql
+    yarn add pg typeorm @nestjs/typeorm
+    touch ormconfig.json
+Para crear un module con all
+    nest g mo idea
+    nest g co idea
+    nest g s idea     /    nest g s idea/idea
+    touch src/idea/idea.dto.ts
+
+Iniciamos con el controlador creando all metodos
+
+    @Get()
+    ideas(){
+clear
+
+    }
+
+    @Post()
+    createDiffieHellman(){
+
+    }
+
+    @Get(':id')
+    idea(){
+
+    }
+
+    @Put()
+    updateIdea(){
+
+    }
+
+    @Delete()
+    deleteIdea(){
+        
+    }
+
