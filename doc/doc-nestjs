@@ -2,4 +2,4 @@ https://docs.nestjs.com
 
 
 para crear un interceptor en una carpeta especifica
-    nest g in src/shared/logging
+    nest g in shared/logging

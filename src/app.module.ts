@@ -5,7 +5,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { IdeaModule } from './idea/idea.module';
 import { HttpErrorFilter } from './shared/http-error.filtel';
-// import { LoggingInterceptor } from './shared/logging.interceptor';
+import { LoggingInterceptor } from './shared/logging.interceptor';
 
 @Module({
   imports: [
@@ -28,10 +28,10 @@ import { HttpErrorFilter } from './shared/http-error.filtel';
       provide: APP_FILTER,
       useClass: HttpErrorFilter
     },
-    // {
-    //   provide: APP_INTERCEPTOR,
-    //   useClass: LoggingInterceptor  
-    // }
+    {
+      provide: APP_INTERCEPTOR,
+      useClass: LoggingInterceptor  
+    }
   ],
 })
 export class AppModule {}
