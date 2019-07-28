@@ -16,8 +16,6 @@ Iniciamos con el controlador creando all metodos
 
     @Get()
     ideas(){
-clear
-
     }
 
     @Post()

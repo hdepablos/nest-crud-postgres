@@ -1,0 +1,5 @@
+1) cuando se crea ael módulo:
+    Modulo carpeta (name): (name)modulo, controlador, servicio, interfaces, dto
+
+    
+    solo name(modulo) va en el import del modulo principal  

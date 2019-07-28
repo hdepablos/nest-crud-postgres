@@ -9,6 +9,6 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   await app.listen(port);
 
-  Logger.log(`Server running app-ideas on http://localhost:${port} version-1`, 'Bootstrap')
+  Logger.log(` - Z Server running app-ideas on http://localhost:${port} version-1`, 'Bootstrap')
 }
 bootstrap();

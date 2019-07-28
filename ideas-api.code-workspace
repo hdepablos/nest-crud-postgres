@@ -5,6 +5,9 @@
 		},
 		{
 			"path": "."
+		},
+		{
+			"path": "/home/coleman/Documentos/api-nest-mongodb-v1"
 		}
 	]
 }

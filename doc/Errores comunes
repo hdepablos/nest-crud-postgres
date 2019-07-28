@@ -1,0 +1,15 @@
+Error
+@InjectRepository(IdeaEntity)
+
+    - Nest can't resolve dependencies of the IdeaService
+        Posible solición:
+            Verifique que en el modulo principal debe estar
+                controllers: [AppController],
+                providers: [AppService]
+                si se agrega un servicio o un controlador en el array es posible que emita este error
+            Es posible que en el constructor del servicio no este, inyectando el repository(entidad) o el modelo 
+
+    - Cannot perform update query because update values are not defined. Call "qb.set(...)" method to specify updated values
+        Posible solición:
+            Verifique que se le esta asignando el decorador @Body 
+            al parametro de entrada, esto es posible en create y update
