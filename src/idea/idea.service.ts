@@ -31,16 +31,19 @@ export class IdeaService {
     }
  
     async updateIdea(id: string, data: Partial<IdeaDto>){
-        let idea = await this.ideaRepository.findOne({ where: { id }})
-        if (!idea) throw new HttpException('Not Found', HttpStatus.NOT_FOUND);
-        
-        const valor = await this.ideaRepository.update({id}, data);
-
-        // console.log('valor');
-        // console.log(valor);
-
-        idea = await this.ideaRepository.findOne({ where: { id }})
+        let idea = new IdeaEntity;
+        idea.idea = data.idea;
+        idea.description = data.description;
+        idea = await this.ideaRepository.save(idea);
         return idea;
+
+        // // Funciona de esta, se puede actualizar un solo campo 
+        // let idea = await this.ideaRepository.findOne({ where: { id }})
+        // if (!idea) throw new HttpException('Not Found', HttpStatus.NOT_FOUND);
+        // const valor = await this.ideaRepository.update({id}, data);
+        // idea = await this.ideaRepository.findOne({ where: { id }})
+        // return idea;
+
     }
 
     async deleteIdea(id: string){
