@@ -3,8 +3,9 @@ crear app
     npm install dotenv
     npm i --save pg typeorm @nestjs/typeorm
     npm i --save @nestjs/typeorm typeorm mysql
-    yarn add @nestjs/typeorm typeorm mysql
-    yarn add pg typeorm @nestjs/typeorm
+    
+    yarn add -S @nestjs/typeorm typeorm mysql
+    yarn add -S pg typeorm @nestjs/typeorm
     touch ormconfig.json
 Para crear un module con all
     nest g mo idea
@@ -12,29 +13,8 @@ Para crear un module con all
     nest g s idea     /    nest g s idea/idea
     touch src/idea/idea.dto.ts
 
-Iniciamos con el controlador creando all metodos
+Para crear un interceptor ya creada al carpeta
+    nest g in shared/logging
 
-    @Get()
-    ideas(){
-    }
-
-    @Post()
-    createDiffieHellman(){
-
-    }
-
-    @Get(':id')
-    idea(){
-
-    }
-
-    @Put()
-    updateIdea(){
-
-    }
-
-    @Delete()
-    deleteIdea(){
-        
-    }
-
+Instalar las clases para validar 
+    yarn add -S class-validator class-transformer

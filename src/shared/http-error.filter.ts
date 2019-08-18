@@ -8,9 +8,13 @@ export class HttpErrorFilter implements ExceptionFilter {
         const response = ctx.getResponse();
         const status = exception.getStatus();
 
+        // response.status(404).json({found:false});
+
         const errorResponse = {
             code: status,
+            // timestamp: `${new Date().toLocaleDateString()} ${new Date().toLocaleTimeString()}`,
             timestamp: `${new Date().toLocaleDateString()} ${new Date().toLocaleTimeString()}`,
+            // timestamp: `${Date.now().toLocaleString()}`,
             path: request.url,
             method: request.method,
             message: exception.message.error || exception.message || 'Error'

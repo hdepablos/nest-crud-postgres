@@ -1,9 +1,13 @@
-import { Controller, Get, Post, Put, Delete, Body, Param } from '@nestjs/common';
+import { Controller, Get, Post, Put, Delete, Body, Param, UsePipes, Logger } from '@nestjs/common';
 import { IdeaService } from './idea.service';
 import { IdeaDto } from './idea.dto';
+import { ValidationPipe } from "./../shared/validation.pipe";
+
 
 @Controller('/api/idea')
 export class IdeaController {
+    private logger = new Logger('IdeaController');
+
     constructor(private ideaService: IdeaService){
     }
 
@@ -13,8 +17,9 @@ export class IdeaController {
     }
 
     @Post()
+    @UsePipes(new ValidationPipe())
     createIdea(@Body() data: IdeaDto){
-        console.log(data);
+        this.logger.log(JSON.stringify(data));
         return this.ideaService.createIdea(data);
     }
 
@@ -24,11 +29,9 @@ export class IdeaController {
     }
 
     @Put(':id')
+    @UsePipes(new ValidationPipe())
     updateIdea(@Param('id') id: string, @Body() data: Partial<IdeaDto>){
-        console.log(id);
-        console.log(data);
-        
-        
+        this.logger.log(JSON.stringify(data));        
         return this.ideaService.updateIdea(id, data);
     }
 
