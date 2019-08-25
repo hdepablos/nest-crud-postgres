@@ -1,54 +1,66 @@
-import { Entity, CreateDateColumn, PrimaryGeneratedColumn, Column, BeforeInsert } from "typeorm";
-import { async } from "rxjs/internal/scheduler/async";
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  CreateDateColumn,
+  BeforeInsert,
+} from 'typeorm';
 import * as bcrypt from 'bcryptjs';
 import * as jwt from 'jsonwebtoken';
-import { UserRO } from "./user.dto";
+
+import { UserRO } from './user.dto';
 
 @Entity('user')
 export class UserEntity {
-    @PrimaryGeneratedColumn('uuid') 
-    id: string;
+  @PrimaryGeneratedColumn('uuid')
+  id: string;
 
-    @CreateDateColumn()
-    created: Date;
+  @CreateDateColumn()
+  created: Date;
 
-    @Column({
-        type: 'text',
-        unique: true
-    }) 
-    username: string;
+  @Column({
+    type: 'text',
+    unique: true,
+  })
+  username: string;
 
-    @Column('text') 
-    password: string;
+  @Column('text')
+  password: string;
 
-    @BeforeInsert()
-    async hashPassword(){
-        // this.password = await bcrypt.hash(this.password);
-        this.password = await bcrypt.hash(this.password, 10);
+  @BeforeInsert()
+  async hashPassword() {
+    this.password = await bcrypt.hash(this.password, 10);
+  }
+
+  async comparePassword(attempt: string): Promise<boolean> {
+    return await bcrypt.compare(attempt, this.password);
+  }
+
+  toResponseObject(showToken: boolean = true): UserRO {
+    const { id, created, username, token } = this;
+    const responseObject: UserRO = {
+      id,
+      created,
+      username,
+    };
+
+    if (showToken) {
+      responseObject.token = token;
     }
 
-    toResponseObject(showToken: boolean = true): UserRO{
-        const { id, created, username, token } = this;
-        const responseObject:any = { id, created, username}
-        if (showToken){
-            responseObject.token = token;
-        }
-        return responseObject;
-    }
+    return responseObject;
+  }
 
-    async comparePassword(attempt: string){
-        return await bcrypt.compare(attempt, this.password)
-    }
+  private get token(): string {
+    const { id, username } = this;
 
-    private get token(){
-        const {id, username, token } = this;
-        return jwt.sign(
-            {
-                id,
-                username
-            },
-            process.env.SECRET,
-            { expiresIn: '7d' },
-        )
-    }
+    return jwt.sign(
+      {
+        id,
+        username,
+      },
+      process.env.SECRET,
+      { expiresIn: '7d' },
+    );
+  }
 }

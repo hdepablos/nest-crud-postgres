@@ -1,27 +1,31 @@
-import { Controller, Post, Get, Body, UsePipes, ValidationPipe } from '@nestjs/common';
-import { LoggingInterceptor } from 'src/shared/logging.interceptor';
+import { Controller, Get, Post, UsePipes, Logger, Body } from '@nestjs/common';
+
 import { UserService } from './user.service';
-import { UserDto } from './user.dto';
+import { UserDTO } from './user.dto';
+import { ValidationPipe } from '../shared/validation.pipe';
 
 @Controller()
 export class UserController {
-    constructor(private userService: UserService){
-    }
+  logger = new Logger('UserController');
 
-    @Get('api/users')
-    allUsers(){
-        return this.userService.allUser();
-    }
+  constructor(private userSerice: UserService) {}
 
-    @Post('login')
-    @UsePipes(new ValidationPipe())
-    login(@Body() data: UserDto){
-        return this.userService.login(data);
-    }
+  @Get('api/users')
+  showAllUsers() {
+    return this.userSerice.showAll();
+  }
 
-    @Post('register')
-    @UsePipes(new ValidationPipe())
-    register(@Body() data: UserDto){
-        return this.userService.register(data);
-    }
+  @Post('auth/login')
+  @UsePipes(new ValidationPipe())
+  login(@Body() data: UserDTO) {
+    this.logger.log(JSON.stringify(data));
+    return this.userSerice.login(data);
+  }
+
+  @Post('auth/register')
+  @UsePipes(new ValidationPipe())
+  register(@Body() data: UserDTO) {
+    this.logger.log(JSON.stringify(data));
+    return this.userSerice.register(data);
+  }
 }

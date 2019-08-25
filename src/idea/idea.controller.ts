@@ -1,7 +1,7 @@
 import { Controller, Get, Post, Put, Delete, Body, Param, UsePipes, Logger } from '@nestjs/common';
 import { IdeaService } from './idea.service';
 import { IdeaDto } from './idea.dto';
-import { ValidationPipe } from "./../shared/validation.pipe";
+import { ValidationPipe } from "../shared/validation.pipe";
 
 
 @Controller('/api/idea')
