@@ -1,9 +1,10 @@
-import { IsString } from "class-validator";
+import { IsString, IsNotEmpty } from "class-validator";
 
 export class IdeaDto {
-    @IsString()
+    @IsNotEmpty()
     readonly idea: string;
 
     @IsString()
+    // @IsNotEmpty()
     readonly description: string;
 }

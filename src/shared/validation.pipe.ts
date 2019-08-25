@@ -5,6 +5,9 @@ import { plainToClass } from 'class-transformer';
 @Injectable()
 export class ValidationPipe implements PipeTransform<any> {
   async transform(value: any, metadata: ArgumentMetadata) {
+
+    console.log("si esta entrando a la exception validación 1");
+
     if (value instanceof Object && this.isEmpty(value)) {
       throw new HttpException('Validation failed: No body submitted', HttpStatus.BAD_REQUEST);
     }
@@ -15,7 +18,11 @@ export class ValidationPipe implements PipeTransform<any> {
     }
     const object = plainToClass(metatype, value);
     const errors = await validate(object);
+    console.log('va a verificar y posee mas caracteres > 0');
+    
     if (errors.length > 0) {
+      console.log('abc-123');
+      
       // throw new BadRequestException('Validation failed');
       throw new HttpException(`Validation failed: ${this.formatErrors(errors)}`, HttpStatus.BAD_REQUEST);
     }

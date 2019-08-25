@@ -1,4 +1,4 @@
-export interface IdeaDto {
+export interface IdeaI {
     readonly idea: string;
     readonly description: string;
 }

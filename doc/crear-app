@@ -11,10 +11,19 @@ Para crear un module con all
     nest g mo idea
     nest g co idea
     nest g s idea     /    nest g s idea/idea
+    nest g interface /user/user
     touch src/idea/idea.dto.ts
+    touch src/user/user.dto.ts
+
+    touch src/user/user.entity.ts
 
 Para crear un interceptor ya creada al carpeta
     nest g in shared/logging
 
 Instalar las clases para validar 
     yarn add -S class-validator class-transformer
+
+    yarn add bcryptjs jsonwebtoken
+
+
+
