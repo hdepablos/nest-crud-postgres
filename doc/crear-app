@@ -17,6 +17,12 @@ Para crear un module con all
 
     touch src/user/user.entity.ts
 
+    // guard - middleware
+    nest g gu /shared/auth
+
+    // Decorator user   @User
+    nest g d user/user
+
 Para crear un interceptor ya creada al carpeta
     nest g in shared/logging
 
