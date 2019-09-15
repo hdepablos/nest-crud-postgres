@@ -1,0 +1,6 @@
+video: Nestjs api relationships 2:20
+
+
+@ManyToOne(type => UserEntity, author => author.ideas)
+    author: UserEntity;
+

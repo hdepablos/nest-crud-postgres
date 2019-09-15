@@ -22,6 +22,9 @@ Para crear un module con all
 
     // Decorator user   @User
     nest g d user/user
+        Nota remplazar por la nueva actualización SetMetadata: 
+            import { SetMetadata } from '@nestjs/common';
+            export const User = (...args: string[]) => SetMetadata('user', args);
 
 Para crear un interceptor ya creada al carpeta
     nest g in shared/logging

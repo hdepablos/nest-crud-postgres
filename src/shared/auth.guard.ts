@@ -8,8 +8,8 @@ export class AuthGuard implements CanActivate {
     if (!request.headers.authorization) return false;
 
     const decode = await this.validateToken(request.headers.authorization);
-    console.log(decode);
-
+    // console.log('pintar el usuarios');
+    // console.log(decode);
     request.user = decode;
     
     return true;

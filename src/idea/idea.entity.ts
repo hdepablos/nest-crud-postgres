@@ -1,13 +1,23 @@
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, ManyToOne, UpdateDateColumn } from "typeorm";
+import { UserEntity } from "./../user/user.entity";
 
 @Entity('idea')
 export class IdeaEntity {
-    @PrimaryGeneratedColumn('uuid') id: string;
+    @PrimaryGeneratedColumn('uuid') 
+    id: string;
 
-    @Column('text') idea: string;
+    @Column('text') 
+    idea: string;
 
-    
-    @Column('text') description: string;
+    @Column('text') 
+    description: string;
 
-    @CreateDateColumn() created: Date;
+    @CreateDateColumn() 
+    created: Date;
+
+    @UpdateDateColumn()
+    updated: Date;
+
+    @ManyToOne(type => UserEntity, author => author.ideas)
+    author: UserEntity;
 }
