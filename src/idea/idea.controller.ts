@@ -41,9 +41,9 @@ export class IdeaController {
     @Put(':id')
     @UseGuards(new AuthGuard())
     @UsePipes(new ValidationPipe())
-    updateIdea(@Param('id') id: string,@User('id') user: string,  @Body() data: Partial<IdeaDto>){
+    updateIdea(@Param('id') id: string, @User('id') user: string,  @Body() data: Partial<IdeaDto>){
         // this.logger.log(JSON.stringify(data));
-        this.logData({id, data, user});        
+        this.logData({id, data, user});
         return this.ideaService.updateIdea(id, user, data);
     }
 

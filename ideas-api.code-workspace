@@ -1,13 +1,51 @@
 {
 	"folders": [
 		{
+			"name": "app-nest-resp",
 			"path": "/home/coleman/Documentos/app-nest-resp"
 		},
 		{
+			"name": "ideas-api",
 			"path": "."
 		},
 		{
+			"name": "api-nest-mongodb-v1",
 			"path": "/home/coleman/Documentos/api-nest-mongodb-v1"
+		},
+		{
+			"name": "hello-word",
+			"path": "/home/coleman/Documentos/tutoriales/nestjs/marluan/hello-word"
+		},
+		{
+			"name": "ionic-docs-master",
+			"path": "/home/coleman/Documentos/web-component/ionic-docs-master"
+		},
+		{
+			"path": "/home/coleman/Documentos/web-component/apppwa"
+		},
+		{
+			"path": "/home/coleman/Documentos/correr"
+		},
+		{
+			"path": "/home/coleman/Documentos/app-web-component-pro (1)/app-web-component/card2"
+		},
+		{
+			"path": "/home/coleman/Documentos/app-web-component-pro (1)/app-web-component/card"
+		},
+		{
+			"path": "/home/coleman/Documentos/basic"
+		},
+		{
+			"path": "/home/coleman/Documentos/web-component/pwa"
+		},
+		{
+			"path": "/home/coleman/Documentos/app-web-component/ejemplos"
+		},
+		{
+			"path": "/home/coleman/Documentos/web-component/ejemplos-inicial"
+		},
+		{
+			"path": "/home/coleman/Documentos/app-web-component/ejemplos-270919"
 		}
 	]
 }
