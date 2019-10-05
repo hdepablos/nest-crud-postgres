@@ -28,4 +28,6 @@ export class IdeaEntity {
     @ManyToMany(type => UserEntity, { cascade: true })
     @JoinTable()
     downvotes: UserEntity[];
+
+    
 }
