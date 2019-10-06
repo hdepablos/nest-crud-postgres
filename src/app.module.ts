@@ -7,6 +7,7 @@ import { IdeaModule } from './idea/idea.module';
 import { HttpErrorFilter } from './shared/http-error.filter';
 import { LoggingInterceptor } from './shared/logging.interceptor';
 import { UserModule } from './user/user.module';
+import { CommentModule } from './comment/comment.module';
 
 @Module({
   imports: [
@@ -22,7 +23,8 @@ import { UserModule } from './user/user.module';
       logging: true
     }),
     IdeaModule,
-    UserModule
+    UserModule,
+    CommentModule
   ],
   controllers: [AppController],
   providers: [AppService, 

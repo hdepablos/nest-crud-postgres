@@ -8,14 +8,16 @@ crear app
     yarn add -S pg typeorm @nestjs/typeorm
     touch ormconfig.json
 Para crear un module con all
-    nest g mo idea
+    nest g mo idea 
     nest g co idea
     nest g s idea     /    nest g s idea/idea
-    nest g interface /user/user
+    nest g interface /idea/idea
     touch src/idea/idea.dto.ts
-    touch src/user/user.dto.ts
+    touch src/idea/idea.entity.ts
 
-    touch src/user/user.entity.ts
+    En una sola linea
+        nest g mo comment && nest g co comment && nest g s comment && nest g interface /comment/comment && touch src/comment/comment.dto.ts && touch src/comment/comment.entity.ts
+
 
     // guard - middleware
     nest g gu /shared/auth

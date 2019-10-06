@@ -1,0 +1,71 @@
+Despues que se crea:
+    modulo, controller, servicio, interface, dto, entity
+
+    En el modulo Add:
+        // Nota Importar las tablas que vas a utilizar en el modulo
+        imports:[TypeOrmModule.forFeature([IdeaEntity, UserEntity, CommentEntity])],
+    
+    En el controlador:
+        Nota: Verificar las referencias a las clases
+
+        // Nota debemos importar el servicio
+        constructor(private commentService: CommentService){
+        }
+
+        @Get('idea/:id')
+        showCommentsByIdea(@Param('id') idea: string){
+
+        }
+
+        @Get('user/:id')
+        showCommentsByUser(@Param('id') userId: string){
+
+        }
+
+        @Get(':id')
+        showComment(@Param('id') id: string){
+
+        }
+
+        @Delete(':id')
+        @UseGuards(new AuthGuard())
+        deleteComment(@Param('id') id: string, @User('Id') userId: string){
+            
+        }
+
+        // NOTA:
+        // Debemos crear primero el dto 
+        @Post('idea/:id')
+        @UseGuards(new AuthGuard())
+        @UsePipes(new ValidationPipe())
+        createComment(@Param('id') idea: string, @User('id') userId: string, @Body() data: CommentDto){
+            
+        }
+
+    Servicios
+        Injectar las tablas en el constructor que estan en el módulo 
+            constructor(
+                @InjectRepository(CommentEntity) private commentReposity: Repository<CommentEntity>,
+                @InjectRepository(IdeaEntity) private ideaReposity: Repository<IdeaEntity>,
+                @InjectRepository(UserEntity) private userReposity: Repository<UserEntity>
+            ) {
+            }
+
+
+
+*********************************
+Relaciones 
+*********************************
+    * Uno a muchos
+        una idea => muchos comentarios
+
+        IdeaEntity
+            @OneToMany(type=> CommentEntity, comment => comment.idea, {cascade: true})
+            comments: CommentEntity[];
+        
+        CommentEntity
+            ManyToOne(type => IdeaEntity, idea => idea.comments)
+            @JoinTable()
+            idea: IdeaEntity;
+
+
