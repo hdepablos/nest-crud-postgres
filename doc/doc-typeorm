@@ -1,1 +1,42 @@
 https://typeorm.io/#/select-query-builder
+
+https://github.com/typeorm/typeorm/blob/master/docs/entities.md#column-types
+
+https://github.com/typeorm/typeorm/tree/master/src/driver/sqlserver
+
+let photos = await connection
+    .getRepository(Photo)
+    .createQueryBuilder("photo") // first argument is an alias. Alias is what you are selecting - photos. You must specify it.
+    .innerJoinAndSelect("photo.metadata", "metadata")
+    .leftJoinAndSelect("photo.albums", "album")
+    .where("photo.isPublished = true")
+    .andWhere("(photo.name = :photoName OR photo.name = :bearName)")
+    .orderBy("photo.id", "DESC")
+    .skip(5)
+    .take(10)
+    .setParameters({ photoName: "My", bearName: "Mishka" })
+    .getMany();
+
+
+
+Ejecutar sql
+
+    const result = await db.entityManager.query("select id, email, name from users where id=1")
+    .catch(err_msg => {
+        console.log("error happen during query");
+        console.log(err_msg);
+    });
+
+    const result = await db.entityManager.query("select id, email, name from users where id=?", [id]);
+
+
+    const result = await manager.query(`YOUR PROCEDURE CALL`);
+
+    Procedimiento almacenados nestjs
+    https://stackoverflow.com/questions/53407415/how-to-call-stored-procedure-in-nestjstypeorm-backend
+
+
+
+    https://stackoverflow.com/questions/53680665/nestjs-typeorm-database-transaction
+
+    https://github.com/typeorm/typeorm/blob/master/docs/transactions.md
