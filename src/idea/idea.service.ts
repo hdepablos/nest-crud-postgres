@@ -63,6 +63,16 @@ export class IdeaService {
         return ideas.map(idea => this.toResponseObject(idea));
     }
 
+    async allIdeasPag(pag: number = 1, newest?: boolean): Promise<IdeaRO[]> {
+        const ideas = await this.ideaRepository.find({ 
+            relations: ['author', 'upvotes', 'downvotes', 'comments'] ,
+            take: 25,
+            skip: 25 * (pag - 1 ),
+            order: newest && { created: 'DESC' }
+        });
+        return ideas.map(idea => this.toResponseObject(idea));
+    }
+
     async createIdea(userId: string, data: IdeaDto): Promise<IdeaRO> {
         const user = await this.userRepository.findOne({ where: { id: userId } });
 

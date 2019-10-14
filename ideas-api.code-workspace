@@ -10,6 +10,12 @@
 		},
 		{
 			"path": "/home/coleman/Documentos/data-loader"
+		},
+		{
+			"path": "/var/www/wc-allseasons-promociones"
+		},
+		{
+			"path": "/var/www/html/cron-node"
 		}
 	]
 }

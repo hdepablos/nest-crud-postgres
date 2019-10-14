@@ -40,17 +40,20 @@ export class CommentService {
     }
 
     // Consultar Usuario
-    async showByUser(id: string) {
+    async showByUser(id: string, page: number = 1) {
         // El usuario con todos los comentarios que el ha realizado con el autor de la idea
         const comments = await this.commentReposity.find({
             where: { id },
-            relations: ['author']
+            relations: ['author'],
+            take: 25,
+            skip: 25 * (page - 1)
         })
 
         // Por cada comentario formatea la salida del comentario
         return comments.map(comment => this.toResponseObject(comment));
 
     }
+
 
     async showComment(id: string) {
         const comment = await this.commentReposity.findOne({
